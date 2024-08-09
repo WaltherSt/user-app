@@ -1,0 +1,17 @@
+<div class="container my-4">
+  <h1>{{title}}</h1>
+  <button class="btn btn-primary " (click)="setOpenClose()">{{openCloseForm?'Close Form':'Create User'}}</button>
+  <div class="row">
+
+    @if (openCloseForm) {
+    <div class="col">
+      <user-form (newUserEventEmitter)="addUser($event)" [user]="userselected" />
+    </div>
+    }
+    @else {
+    <div class="col">
+      <users-table [users]="users" (userRemoveEmitter)="removeUser($event)" (userUpdateEmitter)="updateUser($event)" />
+    </div>
+    }
+  </div>
+</div>
